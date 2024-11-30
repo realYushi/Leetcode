@@ -8,12 +8,12 @@ class Solution:
         stack=[]
         for c in s:
             if c in rule:
-                if stack and rule[c]==stack[-1]:
-                    stack.pop()
-                else:
+                if not stack or rule[c]!=stack[-1]:
                     return False
-            else: 
+                stack.pop()
+            else:
                 stack.append(c)
-        return True if not stack else False
+        return True if not stack else False 
+
 
         
