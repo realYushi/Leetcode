@@ -4,7 +4,7 @@ class Solution:
         sm=defaultdict(int)
 
         for i in students:
-            sm[i]+=1
+            sm[i]=sm.get(i,0)+1
         for sw in sandwiches:
             if sm[sw]>0:
                 res-=1
