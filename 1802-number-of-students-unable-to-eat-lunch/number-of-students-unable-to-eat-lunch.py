@@ -1,12 +1,15 @@
 class Solution:
     def countStudents(self, students: List[int], sandwiches: List[int]) -> int:
-        res=len(students)
-        studentMap=Counter(students)
-        for s in sandwiches:
-            if studentMap[s]>0:
-                res-=1
-                studentMap[s]-=1
+        remainedStudent=len(students)
+        studentsDict=defaultdict(int)
+        for student in students:
+            studentsDict[student]+=1
+        for sandwiche in sandwiches:
+            if studentsDict[sandwiche]>0:
+                studentsDict[sandwiche]-=1
+                remainedStudent -=1
             else:
-                return res
-        return res
+                return remainedStudent
+        return remainedStudent
+
         
