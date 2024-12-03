@@ -9,6 +9,6 @@ class Solution:
                 studentDict[sandwiche]-=1
                 remainStudent-=1
             else:
-                return remainStudent
+                break
         return remainStudent
         
