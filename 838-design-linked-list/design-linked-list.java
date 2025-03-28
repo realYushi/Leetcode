@@ -3,29 +3,35 @@ class Node{
     Node prev;
     Node next;
     public Node(int val){
-        this.val = val;
+        this.prev=null;
+        this.next=null;
+        this.val=val;
     }
     public Node(){
+        this.next=null;
+        this.prev=null;
+
     }
 }
 class MyLinkedList {
     Node dummyHead;
     Node dummyTail;
     int size;
+
     public MyLinkedList() {
         this.dummyHead=new Node();
         this.dummyTail=new Node();
-        dummyHead.next=dummyTail;
-        dummyTail.prev=dummyHead;
+        this.dummyHead.next=this.dummyTail;
+        this.dummyTail.prev=this.dummyHead;
         this.size=0;
     }
     
     public int get(int index) {
-        if(index<0||index>=size){
-            return -1;
+        if(index<0||index>=this.size){
+            return  -1;
         }
         Node curr=this.dummyHead.next;
-        for(int i = 0; i < index;i++){
+        for(int i= 0; i<index; i++){
             curr=curr.next;
         }
         return curr.val;
@@ -35,8 +41,8 @@ class MyLinkedList {
         Node node=new Node(val);
         node.next=this.dummyHead.next;
         node.prev=this.dummyHead;
-        this.dummyHead.next=node;
         node.next.prev=node;
+        node.prev.next=node;
         this.size++;
     }
     
@@ -45,7 +51,7 @@ class MyLinkedList {
         node.next=this.dummyTail;
         node.prev=this.dummyTail.prev;
         node.prev.next=node;
-        this.dummyTail.prev=node;
+        node.next.prev=node;
         this.size++;
     }
     
@@ -61,15 +67,15 @@ class MyLinkedList {
             this.addAtTail(val);
             return;
         }
-        Node node = new Node(val);
+        Node node=new Node(val);
         Node curr=this.dummyHead.next;
-        for(int i =0; i<index;i++){
+        for(int i =0 ; i<index; i++){
             curr=curr.next;
         }
         node.next=curr;
         node.prev=curr.prev;
-        curr.prev.next=node;
-        curr.prev=node;
+        node.prev.next=node;
+        node.next.prev=node;
         this.size++;
         
     }
@@ -79,13 +85,13 @@ class MyLinkedList {
             return;
         }
         Node curr=this.dummyHead.next;
-        for(int i = 0; i<index;i++){
+        
+        for(int i =0 ; i<index; i++){
             curr=curr.next;
         }
-        curr.next.prev=curr.prev;
         curr.prev.next=curr.next;
+        curr.next.prev=curr.prev;
         this.size--;
-        
     }
 }
 
