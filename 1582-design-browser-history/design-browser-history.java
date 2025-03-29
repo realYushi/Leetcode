@@ -1,13 +1,13 @@
 class BrowserHistory {
     List<String> list;
-    int size;
     int curr;
+    int size;
 
     public BrowserHistory(String homepage) {
         this.list=new ArrayList<>();
         this.list.add(homepage);
-        this.size=1;
         this.curr=0;
+        this.size=1;
     }
     
     public void visit(String url) {
@@ -23,6 +23,7 @@ class BrowserHistory {
     public String back(int steps) {
         this.curr=Math.max(0,this.curr-steps);
         return this.list.get(this.curr);
+        
     }
     
     public String forward(int steps) {
