@@ -1,36 +1,34 @@
 class BrowserHistory {
     List<String> history;
-    int current;
     int size;
+    int curr;
 
     public BrowserHistory(String homepage) {
         this.history=new ArrayList<>();
         this.history.add(homepage);
-        this.current=0;
+        this.curr=0;
         this.size=1;
     }
     
     public void visit(String url) {
-        if(this.current<this.history.size()-1){
-        this.current++;
-        this.history.set(this.current,url);
+        this.curr++;
+        if(this.curr<this.history.size()){
+            this.history.set(this.curr,url);
         }else{
-            this.current++;
             this.history.add(url);
         }
-        this.size=this.current+1;
-        
+        this.size=this.curr+1;
     }
     
     public String back(int steps) {
-        this.current=Math.max(0,this.current-steps);
-        return this.history.get(this.current);
+        this.curr=Math.max(0,this.curr-steps);
+        return this.history.get(this.curr);
+        
     }
     
     public String forward(int steps) {
-        this.current=Math.min(this.size-1,this.current+steps);
-        return this.history.get(this.current);
-
+        this.curr=Math.min(this.size-1,this.curr+steps);
+        return this.history.get(this.curr);
         
     }
 }
