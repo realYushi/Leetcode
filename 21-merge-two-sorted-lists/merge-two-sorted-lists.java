@@ -28,6 +28,7 @@ class Solution {
             curr.next=list1;
         }
         return dummyHead.next;
+
         
     }
 }
