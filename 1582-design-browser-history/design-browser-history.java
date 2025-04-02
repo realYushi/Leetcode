@@ -4,18 +4,18 @@ class BrowserHistory {
     int curr;
 
     public BrowserHistory(String homepage) {
-        this.history=new ArrayList<>();
+        this.history=new ArrayList();
         this.history.add(homepage);
-        this.curr=0;
         this.size=1;
+        this.curr=0;
     }
     
     public void visit(String url) {
         this.curr++;
-        if(this.curr<this.history.size()){
-            this.history.set(this.curr,url);
-        }else{
+        if(this.curr>=this.history.size()){
             this.history.add(url);
+        }else{
+            this.history.set(curr,url);
         }
         this.size=this.curr+1;
     }
@@ -23,7 +23,6 @@ class BrowserHistory {
     public String back(int steps) {
         this.curr=Math.max(0,this.curr-steps);
         return this.history.get(this.curr);
-        
     }
     
     public String forward(int steps) {
