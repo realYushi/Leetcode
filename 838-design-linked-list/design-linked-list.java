@@ -1,57 +1,56 @@
 class Node{
-    Node next;
     Node prev;
+    Node next;
     int val;
     public Node(int val){
-        this.next=null;
-        this.prev=null;
         this.val=val;
+        this.prev=null;
+        this.next=null;
     }
     public Node(){
-        this.next=null;
         this.prev=null;
+        this.next=null;
     }
 }
 class MyLinkedList {
+    int size;
     Node dummyHead;
     Node dummyTail;
-    int size;
+
     public MyLinkedList() {
+        this.size=0;
         this.dummyHead=new Node();
         this.dummyTail=new Node();
         this.dummyHead.next=this.dummyTail;
         this.dummyTail.prev=this.dummyHead;
-        this.size=0;
     }
     
     public int get(int index) {
-        if(index<0||index>=size){
+        if(index<0||index>=this.size){
             return -1;
         }
-        Node curr=this.dummyHead.next;
-        for(int i =0; i<index; i++){
-            curr=curr.next;
+        Node cur=this.dummyHead.next;
+        for(int i=0; i<index;i++){
+            cur=cur.next;
         }
-        return curr.val;
-        
+        return cur.val;
     }
     
     public void addAtHead(int val) {
-        Node curr=new Node(val);
-        curr.next=this.dummyHead.next;
-        curr.prev=this.dummyHead;
-        curr.next.prev=curr;
-        curr.prev.next=curr;
+        Node node=new Node(val);
+        node.next=this.dummyHead.next;
+        node.prev=this.dummyHead;
+        node.next.prev=node;
+        node.prev.next=node;
         this.size++;
-        
     }
     
     public void addAtTail(int val) {
-        Node curr=new Node(val);
-        curr.next=this.dummyTail;
-        curr.prev=this.dummyTail.prev;
-        curr.next.prev=curr;
-        curr.prev.next=curr;
+        Node node=new Node(val);
+        node.next=this.dummyTail;
+        node.prev=this.dummyTail.prev;
+        node.next.prev=node;
+        node.prev.next=node;
         this.size++;
         
     }
@@ -59,6 +58,7 @@ class MyLinkedList {
     public void addAtIndex(int index, int val) {
         if(index<0||index>this.size){
             return;
+
         }
         if(index==0){
             this.addAtHead(val);
@@ -68,30 +68,32 @@ class MyLinkedList {
             this.addAtTail(val);
             return;
         }
-        Node node = new Node(val);
-        Node curr=this.dummyHead.next;
+        Node node=new Node(val);
+        Node cur=this.dummyHead.next;
+        
         for(int i=0; i<index; i++){
-            curr=curr.next;
+            cur=cur.next;
         }
-        node.next=curr;
-        node.prev=curr.prev;
+        node.next=cur;
+        node.prev=cur.prev;
         node.next.prev=node;
         node.prev.next=node;
         this.size++;
-        
     }
     
     public void deleteAtIndex(int index) {
         if(index<0||index>=this.size){
             return;
         }
-        Node curr=this.dummyHead.next;
-        for(int i=0; i<index; i++){
-            curr=curr.next;
+        Node node=this.dummyHead.next;
+        for(int i=0; i<index;i++){
+             
+             node=node.next;
         }
-        curr.next.prev=curr.prev;
-        curr.prev.next=curr.next;
+        node.next.prev=node.prev;
+        node.prev.next=node.next;
         this.size--;
+
         
     }
 }
