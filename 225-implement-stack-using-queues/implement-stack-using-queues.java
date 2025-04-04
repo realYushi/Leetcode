@@ -8,23 +8,21 @@ class MyStack {
     public void push(int x) {
         this.q.offer(x);
         for(int i=0; i<q.size()-1;i++){
-            this.q.offer(q.poll());
+            q.offer(q.poll());
         }
-        
     }
     
     public int pop() {
-        return this.q.poll();
-        
+        return q.poll();
     }
     
     public int top() {
-        return this.q.peek();
+        return q.peek();
         
     }
     
     public boolean empty() {
-        return this.q.isEmpty();
+        return q.isEmpty();
         
     }
 }
