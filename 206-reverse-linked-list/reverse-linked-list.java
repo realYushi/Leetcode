@@ -16,9 +16,6 @@ class Solution {
         ListNode newHead=reverseList(head.next);
         head.next.next=head;
         head.next=null;
-
-
         return newHead;
-        
     }
 }
