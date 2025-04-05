@@ -13,16 +13,14 @@ class Solution {
         if(lists.length==0){
             return null;
         }
-        for(int i=1;i<lists.length;i++){
-            lists[i]=mergeLists(lists[i],lists[i-1]);
+        for(int i=1; i<lists.length;i++){
+            lists[i]=mergeLists(lists[i-1],lists[i]);
         }
         return lists[lists.length-1];
-
-        
     }
-    public ListNode mergeLists(ListNode l1, ListNode l2){
+    public ListNode mergeLists(ListNode l1,ListNode l2){
         ListNode dummyHead=new ListNode();
-        ListNode head=dummyHead;
+        ListNode temp=dummyHead;
         while(l1!=null&&l2!=null){
             if(l1.val<l2.val){
                 dummyHead.next=l1;
@@ -31,7 +29,6 @@ class Solution {
                 dummyHead.next=l2;
                 l2=l2.next;
             }
-
             dummyHead=dummyHead.next;
         }
         if(l1==null){
@@ -39,7 +36,6 @@ class Solution {
         }else{
             dummyHead.next=l1;
         }
-        return head.next;
-        
+        return temp.next;
     }
 }
