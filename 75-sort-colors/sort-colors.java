@@ -5,7 +5,7 @@ class Solution {
             bucket[nums[i]]++;
         }
         int j=0;
-        for(int i=0; i<bucket.length;i++){
+        for(int i=0; i< bucket.length;i++){
             while(bucket[i]>0){
                 nums[j]=i;
                 j++;
