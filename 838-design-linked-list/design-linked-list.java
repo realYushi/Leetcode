@@ -11,32 +11,30 @@ class Node{
         this.prev=null;
         this.next=null;
     }
+
 }
 class MyLinkedList {
     Node dummyHead;
     Node dummyTail;
     int size;
-    int i;
-
     public MyLinkedList() {
-        this.size=0;
-        this.i=0;
         this.dummyHead=new Node();
         this.dummyTail=new Node();
         this.dummyHead.next=this.dummyTail;
         this.dummyTail.prev=this.dummyHead;
-        
+        this.size=0;
     }
     
     public int get(int index) {
         if(index<0||index>=this.size){
             return -1;
         }
-        Node node=this.dummyHead.next;
-        for(int i=0; i<index; i++){
-            node=node.next;
+        Node cur=this.dummyHead.next;
+        for(int i=0; i<index;i++){
+
+            cur=cur.next;
         }
-        return node.val;
+        return cur.val;
         
     }
     
@@ -51,38 +49,38 @@ class MyLinkedList {
     }
     
     public void addAtTail(int val) {
-        
         Node node=new Node(val);
         node.next=this.dummyTail;
         node.prev=this.dummyTail.prev;
         node.next.prev=node;
         node.prev.next=node;
         this.size++;
+        
     }
     
     public void addAtIndex(int index, int val) {
         if(index<0||index>this.size){
             return ;
-        }else if(index==0){
+        }
+        if(index==0){
             this.addAtHead(val);
             return;
-        }else if(index==this.size){
+        }
+        if(index==this.size){
             this.addAtTail(val);
             return;
         }
-        Node node =new Node(val);
+        Node node=new Node(val);
         Node cur=this.dummyHead.next;
-        for(int i=0; i<index;i++){
+        for(int i=0;i<index;i++){
             cur=cur.next;
         }
         node.next=cur;
+        
         node.prev=cur.prev;
         node.next.prev=node;
         node.prev.next=node;
         this.size++;
-        
-
-        
     }
     
     public void deleteAtIndex(int index) {
@@ -90,13 +88,12 @@ class MyLinkedList {
             return;
         }
         Node cur=this.dummyHead.next;
-        for(int i =0; i<index;i++){
+        for(int i=0;i<index;i++){
             cur=cur.next;
         }
-        cur.next.prev=cur.prev;
         cur.prev.next=cur.next;
+        cur.next.prev=cur.prev;
         this.size--;
-        
         
     }
 }
