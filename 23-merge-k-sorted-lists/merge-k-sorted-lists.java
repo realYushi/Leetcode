@@ -12,8 +12,6 @@ class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         if(lists.length==0){
             return null;
-        }else if(lists.length==1){
-            return lists[0];
         }
         for(int i=1; i<lists.length;i++){
             lists[i]=mergeLists(lists[i],lists[i-1]);
