@@ -12,7 +12,7 @@ public class Solution extends GuessGame {
         int l=0;
         int r=n;
         while(l<=r){
-            int m= l+(r-l)/2;
+            int m=l+(r-l)/2;
             int res=guess(m);
             if(res==1){
                 l=m+1;
@@ -21,7 +21,6 @@ public class Solution extends GuessGame {
             }else{
                 return m;
             }
-
         }
         return -1;
         
