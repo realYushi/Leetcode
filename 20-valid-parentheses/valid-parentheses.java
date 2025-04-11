@@ -9,9 +9,7 @@ class Solution {
             }else if(c=='['){
                 stack.push(']');
             }else{
-                if(stack.isEmpty()){
-                    return false;
-                }else if(c!=stack.peek()){
+                if(stack.isEmpty()||c!=stack.peek()){
                     return false;
                 }
                 stack.pop();
