@@ -1,6 +1,5 @@
 class Solution {
     public void sortColors(int[] nums) {
-       
         int[] bucket=new int[]{0,0,0};
         for(int i:nums){
             bucket[i]++;
@@ -12,10 +11,7 @@ class Solution {
                 k++;
                 bucket[i]--;
             }
-        }
-        
             
-
-        
+        }
     }
 }
