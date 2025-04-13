@@ -4,14 +4,15 @@ class Solution {
         for(int i:nums){
             bucket[i]++;
         }
-        int k=0;
-        for(int i=0; i<bucket.length;i++){
-            while(bucket[i]>0){
-                nums[k]=i;
-                k++;
-                bucket[i]--;
+            int j=0;
+        for(int i=0; i<bucket.length; i++){
+            int k=bucket[i];
+            while(k>0){
+                nums[j]=i;
+                j++;
+                k--;
             }
-            
         }
+        
     }
 }
