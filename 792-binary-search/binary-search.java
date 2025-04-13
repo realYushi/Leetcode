@@ -10,13 +10,10 @@ class Solution {
             }else if(target>nums[m]){
                 l=m+1;
             }else{
-                break;
+                return m;
             }
         }
-        if(l>r){
-            return -1;
-        }
-        return m;
+        return -1;
         
     }
 }
