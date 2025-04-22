@@ -16,34 +16,35 @@ class MyLinkedList {
     Node dummyHead;
     Node dummyTail;
     int size;
-
     public MyLinkedList() {
         this.dummyHead=new Node();
         this.dummyTail=new Node();
-        this.size=0;
         this.dummyHead.next=this.dummyTail;
         this.dummyTail.prev=this.dummyHead;
+        this.size=0;
     }
     
     public int get(int index) {
-        if(index<0||index>=this.size){
+        if(index<0||this.size<=index){
             return -1;
         }
-        Node node=this.dummyHead.next;
-        for(int i=0; i<index; i++){
-            node=node.next;
+        Node cur=this.dummyHead.next;
+        for(int i=0; i<index;i++){
+            cur=cur.next;
         }
-        return node.val;
+        return cur.val;
+        
     }
     
     public void addAtHead(int val) {
         Node node=new Node(val);
         node.next=this.dummyHead.next;
         node.prev=this.dummyHead;
-        node.next.prev=node;
         node.prev.next=node;
+        node.next.prev=node;
         this.size++;
         
+
         
     }
     
@@ -51,15 +52,14 @@ class MyLinkedList {
         Node node=new Node(val);
         node.next=this.dummyTail;
         node.prev=this.dummyTail.prev;
-        node.next.prev=node;
         node.prev.next=node;
-        this.size++;
-        
+        node.next.prev=node;
+        this.size++ ;
     }
     
     public void addAtIndex(int index, int val) {
         if(index<0||index>this.size){
-            return ;
+            return;
         }
         if(index==0){
             this.addAtHead(val);
@@ -71,7 +71,7 @@ class MyLinkedList {
         }
         Node node=new Node(val);
         Node cur=this.dummyHead.next;
-        for(int i=0;i<index;i++){
+        for(int i=0; i<index;i++){
             cur=cur.next;
         }
         node.next=cur;
@@ -79,20 +79,18 @@ class MyLinkedList {
         node.next.prev=node;
         node.prev.next=node;
         this.size++;
-        
-        
     }
     
     public void deleteAtIndex(int index) {
         if(index<0||index>=this.size){
-            return;
+            return ;
         }
         Node cur=this.dummyHead.next;
         for(int i=0; i<index; i++){
             cur=cur.next;
         }
-        cur.next.prev=cur.prev;
         cur.prev.next=cur.next;
+        cur.next.prev=cur.prev;
         this.size--;
         
     }
