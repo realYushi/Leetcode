@@ -14,19 +14,19 @@
  * }
  */
 class Solution {
-    List <Integer> res;
+
     public List<Integer> inorderTraversal(TreeNode root) {
-        this.res=new ArrayList<>();
-        inorder(root);
-        return res;
+        List<Integer> list=new ArrayList<>();
+        inorder(list,root);
+        return list;
         
     }
-    public void inorder(TreeNode root){
+    public void inorder(List<Integer> list,TreeNode root){
         if(root==null){
             return;
         }
-        inorder(root.left);
-        this.res.add(root.val);
-        inorder(root.right);
+        inorder(list,root.left);
+        list.add(root.val);
+        inorder(list,root.right);
     }
 }
