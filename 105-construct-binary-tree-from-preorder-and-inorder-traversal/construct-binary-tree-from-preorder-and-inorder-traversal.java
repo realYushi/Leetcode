@@ -19,8 +19,8 @@ class Solution {
             return null;
         }
         TreeNode root=new TreeNode(preorder[0]);
-        int m=-1;
-        for(int i=0; i<inorder.length;i++){
+        int m= -1;
+        for(int i=0;i<inorder.length;i++){
             if(inorder[i]==root.val){
                 m=i;
                 break;
@@ -32,7 +32,7 @@ class Solution {
         int[] Rpreorder=Arrays.copyOfRange(preorder,m+1,preorder.length);
         int[] Rinorder=Arrays.copyOfRange(inorder,m+1,inorder.length);
         root.right=buildTree(Rpreorder,Rinorder);
-        
         return root;
+        
     }
 }
