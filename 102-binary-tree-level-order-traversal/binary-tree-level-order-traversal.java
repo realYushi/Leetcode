@@ -23,17 +23,16 @@ class Solution {
         q.add(root);
         while(!q.isEmpty()){
             List<Integer> inner=new ArrayList<>();
-            int size=q.size(); 
-            for(int i =0;i<size;i++){
+            int size=q.size();
+            for(int i=0; i<size;i++){
                 TreeNode node=q.remove();
                 if(node.left!=null){
-                    q.add(node.left);
+                    q.add(node.left);   
                 }
                 if(node.right!=null){
-                    q.add(node.right);
+                    q.add(node.right);   
                 }
                 inner.add(node.val);
-
             }
             list.add(inner);
         }
