@@ -23,10 +23,10 @@ class Solution {
         q.add(root);
         while (!q.isEmpty()) {
             int len = q.size();
-            TreeNode right=null;
+            TreeNode right = null;
             for (int i = 0; i < len; i++) {
                 TreeNode node = q.remove();
-                right=node;
+                right = node;
                 if (node.left != null) {
                     q.add(node.left);
                 }
@@ -34,7 +34,7 @@ class Solution {
                     q.add(node.right);
                 }
             }
-                res.add(right.val);
+            res.add(right.val);
         }
         ;
         return res;
