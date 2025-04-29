@@ -15,12 +15,13 @@
  */
 class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
+        
         if(preorder.length==0||inorder.length==0){
             return null;
         }
-        TreeNode root= new TreeNode(preorder[0]);
+        TreeNode root=new TreeNode(preorder[0]);
         int m=-1;
-        for(int i=0; i<inorder.length; i++){
+        for(int i=0;i<inorder.length;i++){
             if(inorder[i]==root.val){
                 m=i;
                 break;
