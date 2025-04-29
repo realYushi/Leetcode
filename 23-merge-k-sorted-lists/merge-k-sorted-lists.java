@@ -10,33 +10,35 @@
  */
 class Solution {
     public ListNode mergeLists(ListNode list1, ListNode list2){
-        ListNode dummyHead = new ListNode();
-        ListNode head=dummyHead;
+        ListNode dummyHead=new ListNode();
+        ListNode cur=dummyHead;
         while(list1!=null&&list2!=null){
             if(list1.val<list2.val){
-                head.next=list1;
+                cur.next=list1;
                 list1=list1.next;
             }else{
-                head.next=list2;
+                cur.next=list2;
                 list2=list2.next;
             }
-            head=head.next;
+            cur=cur.next;
         }
-        if(list1==null){
-            head.next=list2;
+        if(list1==null) {
+            cur.next=list2;
         }else{
-            head.next=list1;
+            cur.next=list1;
         }
         return dummyHead.next;
     }
+
     public ListNode mergeKLists(ListNode[] lists) {
         if(lists.length==0){
             return null;
         }
-        for(int i=1;i<lists.length;i++){
+        for(int i=1; i<lists.length;i++){
             lists[0]=mergeLists(lists[0],lists[i]);
         }
         return lists[0];
+
         
     }
 }
