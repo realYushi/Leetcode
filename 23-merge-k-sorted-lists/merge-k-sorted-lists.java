@@ -35,9 +35,9 @@ class Solution {
             return null; 
         }
         for(int i=1; i<lists.length;i++){
-            lists[i]=mergeLists(lists[i-1],lists[i]);
+            lists[0]=mergeLists(lists[0],lists[i]);
         }
-        return lists[lists.length-1];
+        return lists[0];
         
     }
 }
