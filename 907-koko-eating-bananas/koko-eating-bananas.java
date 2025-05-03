@@ -1,28 +1,31 @@
 class Solution {
+    public int finishEatHours(int[] piles, int speed){
+        int hours=0;
+        for(int b:piles){
+            hours+=Math.ceil((double)b/((double)speed));
+        }
+        return hours;
+
+    }
     public int minEatingSpeed(int[] piles, int h) {
-        int max=0;
-        for(int i :piles){
-            if(i>max){
-                max=i;
+        int l=0;
+        int r=0;
+        for(int b:piles){
+            if(b>r){
+                r=b;
             }
         }
-        int l=1;
-        int r=max;
-        int res = max;
         while(l<=r){
             int m=l+(r-l)/2;
-            int time=0;
-            for(int i:piles){
-                time+=Math.ceil((double)i/m);
-            }
-            if(time>h){
+            int hours=finishEatHours(piles,m);
+            if(h<hours){
                 l=m+1;
             }else{
-                res=m;
                 r=m-1;
             }
         }
-        return res;
+        return r+1;
+
         
     }
 }
