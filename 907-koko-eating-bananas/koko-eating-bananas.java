@@ -1,11 +1,10 @@
 class Solution {
-    public int finishEatHours(int[] piles, int speed){
-        int hours=0;
+    public int eattingHours(int[] piles, int speed){
+        int res=0;
         for(int b:piles){
-            hours+=Math.ceil((double)b/((double)speed));
+            res+=Math.ceil((double)b/speed);
         }
-        return hours;
-
+        return res;
     }
     public int minEatingSpeed(int[] piles, int h) {
         int l=0;
@@ -17,8 +16,8 @@ class Solution {
         }
         while(l<=r){
             int m=l+(r-l)/2;
-            int hours=finishEatHours(piles,m);
-            if(h<hours){
+            int hour=eattingHours(piles,m);
+            if(hour>h){
                 l=m+1;
             }else{
                 r=m-1;
