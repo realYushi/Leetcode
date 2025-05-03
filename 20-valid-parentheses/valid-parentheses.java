@@ -3,20 +3,22 @@ class Solution {
         Stack<Character> stack=new Stack<>();
         for(char c:s.toCharArray()){
             if(c=='{'){
-                stack.push('}');
+                stack.add('}');
             }else if(c=='('){
-                stack.push(')');
+                stack.add(')');
             }else if(c=='['){
-                stack.push(']');
+                stack.add(']');
             }else{
-                if(stack.isEmpty()||c!=stack.peek()){
+                if(stack.isEmpty()){
                     return false;
+                }else if(c!=stack.peek()){
+                    return false;
+                }else{
+                    stack.pop();
                 }
-                stack.pop();
             }
         }
-        return stack.isEmpty(); 
-
+        return stack.isEmpty();
         
     }
 }
