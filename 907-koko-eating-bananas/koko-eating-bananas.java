@@ -1,5 +1,5 @@
 class Solution {
-    public int eattingHours(int[] piles, int speed){
+    public int eatingSpeed(int[] piles, int speed){
         int res=0;
         for(int b:piles){
             res+=Math.ceil((double)b/speed);
@@ -15,16 +15,15 @@ class Solution {
             }
         }
         while(l<=r){
-            int m=l+(r-l)/2;
-            int hour=eattingHours(piles,m);
-            if(hour>h){
+            int m= l+(r-l)/2;
+            int time=eatingSpeed(piles,m);
+            if(time>h){
                 l=m+1;
             }else{
                 r=m-1;
             }
         }
         return r+1;
-
         
     }
 }
