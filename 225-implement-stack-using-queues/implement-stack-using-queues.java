@@ -7,7 +7,7 @@ class MyStack {
     
     public void push(int x) {
         this.q.add(x);
-        for(int i=0;i<this.q.size()-1;i++){
+        for(int i=1;i<this.q.size();i++){
             this.q.add(this.q.remove());
         }
         
