@@ -14,19 +14,21 @@
  * }
  */
 class Solution {
-    public void dfs(TreeNode root, List<Integer> list){
+    public void dfs(TreeNode root, List<Integer> res){
         if(root==null){
             return;
         }
-        dfs(root.left,list);
-        list.add(root.val);
-        dfs(root.right,list);
-    } 
+        dfs(root.left,res);
+        res.add(root.val);
+        dfs(root.right,res);
+    }
     public int kthSmallest(TreeNode root, int k) {
-        List<Integer> list=new ArrayList<>();
-        dfs(root,list);
-        return list.get(k-1);
-
+        if(root==null){
+            return 0;
+        }
+    List<Integer> res=new ArrayList<>();
+        dfs(root,res);
+        return res.get(k-1);
 
         
     }
