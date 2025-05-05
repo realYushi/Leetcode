@@ -14,16 +14,12 @@
  * }
  */
 class Solution {
-    public List<Integer> rightSideView(TreeNode root) {
-        List<Integer> list=new ArrayList<>();
-        if(root==null){
-            return list;
-        }
+    public void bfs(TreeNode root, List<Integer> res){
         Queue<TreeNode> q= new LinkedList<>();
         q.add(root);
         while(!q.isEmpty()){
-            int res=0;
             int len=q.size();
+            TreeNode last=null;
             for(int i=0;i<len;i++){
                 TreeNode node=q.remove();
                 if(node.left!=null){
@@ -32,11 +28,18 @@ class Solution {
                 if(node.right!=null){
                     q.add(node.right);
                 }
-                res=node.val;
+                last=node;
             }
-            list.add(res);
+            res.add(last.val);
         }
-        return list;
+    }
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> res=new ArrayList<>();
+        if(root==null){
+            return res;
+        }
+        bfs(root,res);
+        return res;
         
     }
 }
