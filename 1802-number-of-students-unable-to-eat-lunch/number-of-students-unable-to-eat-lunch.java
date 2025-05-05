@@ -1,15 +1,15 @@
 class Solution {
     public int countStudents(int[] students, int[] sandwiches) {
-        Queue<Integer> q=new LinkedList<>();
+        Queue<Integer> q= new LinkedList<>();
         for(int s:students){
             q.add(s);
         }
         int eaten=0;
         for(int s:sandwiches){
-            int att=0;
             int len=q.size();
+            int att=0;
             while(att!=len){
-                if(s==q.peek()){
+                if(q.peek()==s){
                     q.remove();
                     eaten++;
                     break;
@@ -22,7 +22,6 @@ class Solution {
                 break;
             }
         }
-        return sandwiches.length-eaten;
-        
+        return sandwiches.length-eaten;        
     }
 }
