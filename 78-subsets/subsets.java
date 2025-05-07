@@ -6,7 +6,6 @@ class Solution {
         }
         sub.add(nums[i]);
         dfs(res,sub,i+1,nums);
-
         sub.remove(sub.size()-1);
         dfs(res,sub,i+1,nums);
 
@@ -16,6 +15,5 @@ class Solution {
         List<Integer> sub= new ArrayList<>();
         dfs(res,sub,0,nums);
         return res;
-        
     }
 }
