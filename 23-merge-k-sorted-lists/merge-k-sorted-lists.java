@@ -9,7 +9,7 @@
  * }
  */
 class Solution {
-    public ListNode mergeLists(ListNode  list1, ListNode list2){
+    public ListNode mergeKList(ListNode list1, ListNode list2){
         ListNode dummyHead=new ListNode();
         ListNode cur=dummyHead;
         while(list1!=null&&list2!=null){
@@ -33,8 +33,9 @@ class Solution {
         if(lists.length==0){
             return null;
         }
-        for(int i=1; i<lists.length;i++){
-            lists[0]=mergeLists(lists[0],lists[i]);
+        
+        for(int i=1; i<lists.length; i++){
+            lists[0]=mergeKList(lists[i],lists[0]);
         }
         return lists[0];
         
