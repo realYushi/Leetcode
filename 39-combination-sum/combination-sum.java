@@ -1,8 +1,8 @@
 class Solution {
-    public void dfs(List<List<Integer>> res, List<Integer> sub, int[] candidates,int i, int target){
+    public void dfs(List<List<Integer>> res, List<Integer> sub, int[] candidates,int i,int target){
         if(target==0){
             res.add(new ArrayList<>(sub));
-            return;
+            return; 
         }
         if(i>=candidates.length||target<0){
             return;
@@ -14,8 +14,8 @@ class Solution {
         dfs(res,sub,candidates,i+1,target);
     }
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        List<Integer> sub=new ArrayList<>();
         List<List<Integer>> res=new ArrayList<>();
+        List<Integer> sub= new ArrayList<>();
         dfs(res,sub,candidates,0,target);
         return res;
         
