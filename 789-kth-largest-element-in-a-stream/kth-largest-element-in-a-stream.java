@@ -6,19 +6,20 @@ class KthLargest {
         this.k=k;
         this.q=new PriorityQueue<>();
         for(int n:nums){
-            q.add(n);
-            if(k<q.size()){
-                q.remove();
+            this.q.add(n);
+            if(this.k<this.q.size()){
+                this.q.remove();
             }
         }
+        
     }
     
     public int add(int val) {
-        q.add(val);
-        if(k<q.size()){
-            q.remove();
+        this.q.add(val);
+        if(this.k<this.q.size()){
+            this.q.remove();
         }
-        return q.peek();
+        return this.q.peek();
         
     }
 }
