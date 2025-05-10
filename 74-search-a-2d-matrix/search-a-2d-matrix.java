@@ -1,28 +1,28 @@
 class Solution {
-    public int bs1(int[][] matix, int target){
+    public int bs1(int[][] matrix,int target){
         int l=0;
-        int r= matix.length-1;
-        int rowLen=matix[0].length-1;
+        int r=matrix.length-1;
+        int rowL=matrix[0].length-1;
         while(l<=r){
             int m= l+(r-l)/2;
-            if(target<matix[m][0]){
+            if(target<matrix[m][0]){
                 r=m-1;
-            }else if(target>matix[m][rowLen]){
+            }else if(target>matrix[m][rowL]){
                 l=m+1;
             }else{
                 return m;
             }
         }
-        return -1;
+        return  -1;
     }
-    public boolean bs2(int[] list, int target ){
+    public boolean bs2(int[] list, int target){
         int l=0;
-        int r= list.length-1;
+        int r=list.length-1;
         while(l<=r){
-            int m= l+(r-l)/2;
+            int m=l+(r-l)/2;
             if(target<list[m]){
                 r=m-1;
-            }else if(target > list[m]){
+            }else if(target>list[m]){
                 l=m+1;
             }else{
                 return true;
