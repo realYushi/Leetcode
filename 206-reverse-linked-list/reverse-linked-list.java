@@ -20,6 +20,5 @@ class Solution {
         head.next.next=head;
         head.next=null;
         return newHead;
-        
     }
 }
