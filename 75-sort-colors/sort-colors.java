@@ -1,6 +1,6 @@
 class Solution {
     public void sortColors(int[] nums) {
-        int[] bucket= new int[]{0,0,0};
+        int[] bucket=new int[]{0,0,0};
         for(int c:nums){
             bucket[c]++;
         }
@@ -8,8 +8,8 @@ class Solution {
         for(int i=0;i<bucket.length;i++){
             while(bucket[i]>0){
                 nums[j]=i;
-                j++;
                 bucket[i]--;
+                j++;
             }
         }
         return;
