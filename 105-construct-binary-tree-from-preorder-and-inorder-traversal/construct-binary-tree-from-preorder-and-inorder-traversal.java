@@ -20,11 +20,13 @@ class Solution {
         }
         TreeNode root=new TreeNode(preorder[0]);
         int m=-1;
-        for(int i=0;i<inorder.length;i++){
+        for(int i=0; i<inorder.length;i++){
             if(root.val==inorder[i]){
                 m=i;
+                break;
             }
         }
+
         int[] lpreorder=Arrays.copyOfRange(preorder,1,m+1);
         int[] linorder=Arrays.copyOfRange(inorder,0,m);
         root.left=buildTree(lpreorder,linorder);
