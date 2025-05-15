@@ -20,27 +20,25 @@ class Solution {
         }
         if(key<root.val){
             root.left=deleteNode(root.left,key);
-        }else if( key>root.val){
+        }else if(key>root.val){
             root.right=deleteNode(root.right,key);
         }else{
-            if(root.left==null){
-                return root.right;
-            }
-            if( root.right==null){
-                return root.left;
-            }
             if(root.left==null&&root.right==null){
                 return null;
+            }else if(root.left==null){
+                return root.right;
+            }else if(root.right==null){
+                return root.left;
+            }else{
+                TreeNode cur = root.right;
+                while(cur.left!=null){
+                    cur=cur.left;
+                }
+                root.val=cur.val;
+                root.right=deleteNode(root.right,root.val);
             }
-            TreeNode cur= root.right;
-            while(cur.left!=null){
-                cur=cur.left;
-            }
-            root.val=cur.val;
-            root.right=deleteNode(root.right,root.val);
         }
         return root;
-
         
     }
 }
