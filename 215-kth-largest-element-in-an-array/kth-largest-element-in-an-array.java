@@ -3,7 +3,7 @@ class Solution {
         Queue<Integer> q= new PriorityQueue<>();
         for(int n:nums){
             q.add(n);
-            if(k<q.size()){
+            if(q.size()>k){
                 q.remove();
             }
         }
