@@ -1,68 +1,72 @@
 class Node{
+    int val;
     int key;
-    int value;  
-    Node prev;
     Node next;
-    public Node(int key,int val){
-        this.key=key;
-        this.value=val;
-        this.prev=null;
-        this.next=null; 
-    }
+    Node prev;
     public Node(){
+        this.val=0;
         this.key=0;
-        this.value=0;
+        this.next=null;
         this.prev=null;
-        this.next=null; 
+    }
+    public Node(int key, int val){
+        this.val=val;
+        this.key=key;
+        this.next=null;
+        this.prev=null;
     }
 }
 class LRUCache {
-    private Node dummyHead;
-    private Node dummyTail;
-    private int cap;
-    private HashMap<Integer,Node> catche;
+    Node dummyHead;
+    Node dummyTail;
+    Map<Integer,Node> cache;
+    int cap;
     public LRUCache(int capacity) {
-        this.dummyHead=new Node();
-        this.dummyTail=new Node();
+        this.cap=capacity;
+        this.cache= new HashMap<>();
+        this.dummyHead= new Node();
+        this.dummyTail= new Node();
         this.dummyHead.next=this.dummyTail;
         this.dummyTail.prev=this.dummyHead;
-        this.cap=capacity;
-        this.catche=new HashMap<>();
     }
     private void insert(Node node){
         node.next=this.dummyTail;
         node.prev=this.dummyTail.prev;
-        node.next.prev=node;
         node.prev.next=node;
+        node.next.prev=node;
         return;
     }
     private void remove(Node node){
-        node.prev.next=node.next;
-        node.next.prev=node.prev;
+        Node next=node.next;
+        Node prev= node.prev;
+        node.prev.next=next;
+        node.next.prev=prev;
         return;
     }
     
     public int get(int key) {
-        if(this.catche.containsKey(key)){
-            Node node = this.catche.get(key);
-            this.remove(node);
-            this.insert(node);
-            return node.value;
+        if(this.cache.containsKey(key)){
+            Node node = this.cache.get(key);
+            remove(node);
+            insert(node);
+            return node.val;
         }
         return -1;
+        
     }
     
     public void put(int key, int value) {
-        if(this.catche.containsKey(key)){
-            this.remove(this.catche.get(key));
+        if(this.cache.containsKey(key)){
+            Node node=this.cache.get(key);
+            remove(node);
         }
-        Node node= new Node(key,value);
-        this.catche.put(key,node);
-        this.insert(node);
-        if(this.catche.size()>this.cap){
-            Node least=this.dummyHead.next;
-            this.catche.remove(least.key);
-            remove(least);
+        Node node = new Node(key,value);
+        this.cache.put(key,node);
+        insert(node);
+        if(this.cache.size()>this.cap){
+            Node lru= this.dummyHead.next;
+            this.cache.remove(lru.key);
+            remove(lru);
         }
         return;
         
