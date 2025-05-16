@@ -1,45 +1,40 @@
 class Solution {
     public int shortestPathBinaryMatrix(int[][] grid) {
-        if(grid[0][0]==1){
+        int n = grid.length;
+        if (grid[0][0] == 1 || grid[n - 1][n - 1] == 1) {
             return -1;
         }
-        int n = grid.length;
-        if(n==1){
+        if (n == 1) {
             return 1;
         }
-        Queue<int[]> q = new LinkedList<>();
-        int length = 1;
-        q.add(new int[] { 0, 0 });
-        int[][] dirs = new int[][] {
-                { 0, 1 },
-                { 0, -1 },
-                { 1, 0 },
-                { -1, 0 },
-                { 1, 1 },
-                { 1, -1 },
-                { -1, 1 },
-                { -1, -1 },
+        Queue<int[]> q= new LinkedList<>();
+        int res=1;
+        q.add(new int[]{0,0});
+        grid[0][0]=1;
+        int[][] dirs= new int[][]{
+            {1,0},{-1,0},{1,1},{1,-1},
+            {0,1},{0,-1},{-1,-1},{-1,1}
         };
-        while (!q.isEmpty()) {
-            int len = q.size();
-            for (int i = 0; i < len; i++) {
-                int[] p = q.remove();
-                if (p[0] == n - 1 && p[1] == n - 1) {
-                    return length;
+        while(!q.isEmpty()){
+            int len=q.size();
+            for(int i=0; i<len;i++){
+                int[] cell= q.remove();
+                if(cell[0]==grid.length-1&&cell[1]==grid[0].length-1){
+                    return res;
                 }
-                for (int[] dir : dirs) {
-                    int nr = p[0] + dir[0];
-                    int nc = p[1] + dir[1];
-                    if (nr < 0 || nc < 0 || nr >= n || nc >= n || grid[nr][nc] == 1 ) {
+                for(int[] d:dirs){
+                    int nr=cell[0]+d[0];
+                    int nc=cell[1]+d[1];
+                    if(nr<0||nc<0 || nr>=grid.length||nc>=grid[0].length || grid[nr][nc]==1){
                         continue;
                     }
-                    grid[nr][nc] = 1;
-                    q.add(new int[] { nr, nc });
+                    grid[nr][nc]=1;
+                    q.add(new int[]{nr,nc});
                 }
             }
-            length++;
+            res++;
         }
-
+        
         return -1;
     }
 }
