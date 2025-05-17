@@ -20,10 +20,10 @@ class Solution {
         }
         if(val<root.val){
             root.left=insertIntoBST(root.left,val);
-        }else{
+        }
+        if(val>root.val){
             root.right=insertIntoBST(root.right,val);
         }
         return root;
-        
     }
 }
