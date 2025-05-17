@@ -1,17 +1,17 @@
-class Node{
-    int val;
+class Node {
     int key;
+    int value;
     Node next;
     Node prev;
-    public Node(int key, int val){
+    public Node(int key, int value){
         this.key=key;
-        this.val=val;
+        this.value=value;
         this.next=null;
         this.prev=null;
     }
     public Node(){
         this.key=0;
-        this.val=0;
+        this.value=0;
         this.next=null;
         this.prev=null;
     }
@@ -21,7 +21,6 @@ class LRUCache {
     Map<Integer, Node> cache;
     Node dummyHead;
     Node dummyTail;
-
     public LRUCache(int capacity) {
         this.cap=capacity;
         this.cache=new HashMap<>();
@@ -48,22 +47,23 @@ class LRUCache {
             Node node=this.cache.get(key);
             remove(node);
             insert(node);
-            return node.val;
+            return node.value;
         }
         return -1;
+        
     }
     
     public void put(int key, int value) {
         if(this.cache.containsKey(key)){
             remove(this.cache.get(key));
         }
-        Node node=new Node(key,value);
-        this.cache.put(key,node);
+        Node node =new Node(key,value); 
         insert(node);
+        this.cache.put(node.key,node);
         if(this.cache.size()>this.cap){
             Node lru=this.dummyHead.next;
-            this.cache.remove(lru.key);
             remove(lru);
+            this.cache.remove(lru.key);
         }
         return;
         
