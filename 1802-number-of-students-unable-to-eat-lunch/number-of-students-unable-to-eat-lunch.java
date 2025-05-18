@@ -1,17 +1,15 @@
 class Solution {
-    Queue<Integer> q;
-
     public int countStudents(int[] students, int[] sandwiches) {
-        this.q = new LinkedList<>();
+        Queue<Integer> q = new LinkedList<>();
+        int eaten=0;
         for (int s : students) {
-            this.q.add(s);
+            q.add(s);
         }
-        int eaten = 0;
         for (int s : sandwiches) {
             int len = q.size();
             int att = 0;
-            while (len != att) {
-                if (s == q.peek()) {
+            while (att != len) {
+                if (q.peek() == s) {
                     q.remove();
                     eaten++;
                     break;
@@ -20,11 +18,11 @@ class Solution {
                     att++;
                 }
             }
-            if (att == len) {
+            if(att==len){
                 break;
             }
         }
-        return sandwiches.length - eaten;
 
+        return sandwiches.length-eaten;
     }
 }
