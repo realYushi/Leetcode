@@ -16,21 +16,20 @@
 class Solution {
     public TreeNode deleteNode(TreeNode root, int key) {
         if(root==null){
-            return null;
+            return root;
+
         }
         if(key<root.val){
             root.left=deleteNode(root.left,key);
         }else if(key>root.val){
             root.right=deleteNode(root.right,key);
         }else{
-            if(root.left==null&&root.right==null){
-                return null;
-            }else if(root.left==null){
+            if(root.left==null){
                 return root.right;
             }else if(root.right==null){
                 return root.left;
             }else{
-                TreeNode cur = root.right;
+                TreeNode cur=root.right;
                 while(cur.left!=null){
                     cur=cur.left;
                 }
