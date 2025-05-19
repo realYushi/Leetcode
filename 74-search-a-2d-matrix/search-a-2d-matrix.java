@@ -9,21 +9,21 @@ class Solution {
                 r=m-1;
             }else if(target>matrix[m][rowLen]){
                 l=m+1;
-            }else {
+            }else{
                 return m;
             }
         }
         return -1;
     }
-    private int bs2(int[]list, int target){
+    private int bs2(int[] list , int target){
         int l=0;
         int r=list.length-1;
         while(l<=r){
             int m=l+(r-l)/2;
-            if(target<list[m]){
-                r=m-1;
-            }else if(target>list[m]){
+            if(target>list[m]){
                 l=m+1;
+            }else if(target<list[m]){
+                r=m-1;
             }else{
                 return m;
             }
@@ -35,7 +35,7 @@ class Solution {
         if(row==-1){
             return false;
         }
-        return bs2(matrix[row],target)>=0;
+        return bs2(matrix[row],target)!=-1;
         
     }
 }
