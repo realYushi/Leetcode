@@ -1,12 +1,12 @@
 class Solution {
     public int orangesRotting(int[][] grid) {
+        Queue<int[]> q=new LinkedList<>();
         int ROWS=grid.length;
         int COLS=grid[0].length;
-        Queue<int[]> q=new LinkedList<>();
         int time=0;
         int fresh=0;
-        for(int r= 0; r<ROWS; r++){
-            for(int c=0; c<COLS;c++){
+        for(int r=0; r<ROWS;r++){
+            for(int c=0; c<COLS; c++){
                 if(grid[r][c]==1){
                     fresh++;
                 }
@@ -15,13 +15,13 @@ class Solution {
                 }
             }
         }
-        int[][] dirs= new int[][]{
-            {0,1}, {0,-1},{1,0},{-1,0}
+         int[][] dirs=new int[][]{
+            {0,1},{0,-1},{1,0},{-1,0}
         };
-        while(fresh>0 && !q.isEmpty()){
+        while(fresh>0&&!q.isEmpty()){
             int len=q.size();
             for(int i=0; i<len; i++){
-                int p[]=q.remove();
+                int[] p=q.remove();
                 for(int d[]:dirs){
                     int nr=p[0]+d[0];
                     int nc=p[1]+d[1];
@@ -34,9 +34,8 @@ class Solution {
             }
             time++;
         }
+       
         return fresh==0?time:-1;
-
-
         
     }
 }
