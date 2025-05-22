@@ -6,10 +6,10 @@ class Solution {
         return list;
     }
 
-    private List<List<Integer>> dfs(List<List<Integer>> list, List<Integer> sub, int[] nums, int i) {
+    private void dfs(List<List<Integer>> list, List<Integer> sub, int[] nums, int i) {
         if(i>=nums.length){
             list.add(new ArrayList<>(sub));
-            return list;
+            return ;
         }
         sub.add(nums[i]);
         dfs(list,sub,nums,i+1);
@@ -17,7 +17,6 @@ class Solution {
         sub.remove(sub.size()-1);
         dfs(list,sub,nums,i+1);
 
-        return list;
 
 
     }
