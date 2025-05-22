@@ -7,19 +7,19 @@ class MyStack {
     
     public void push(int x) {
         this.q.add(x);
-        for(int i=1;i<this.q.size();i++){
+        for(int i=0;i<this.q.size()-1;i++ ){
             this.q.add(this.q.remove());
         }
+        return;
         
     }
     
     public int pop() {
         return this.q.remove();
-        
     }
     
     public int top() {
-        return this.q.element();
+        return this.q.peek();
         
     }
     
