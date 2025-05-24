@@ -24,11 +24,10 @@ class Solution {
         if(val<root.val){
             return searchBST(root.left,val);
         }
-        
         if(val>root.val){
             return searchBST(root.right,val);
         }
-        
         return root;
+        
     }
 }
