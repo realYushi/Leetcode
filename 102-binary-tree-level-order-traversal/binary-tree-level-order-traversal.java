@@ -14,34 +14,32 @@
  * }
  */
 class Solution {
-    public  void bfs(List<List<Integer>>res,  TreeNode  root){
-        Queue<TreeNode> q= new LinkedList<>();
+    private void bsf(List<List<Integer>> list, TreeNode root){
+        Queue<TreeNode> q=new LinkedList<>();
         q.add(root);
         while(!q.isEmpty()){
-            List<Integer> layer=new ArrayList<>();
-            int len=q.size();
-            for(int i=0; i<len;i++){
+            int len= q.size();
+            List<Integer> sub = new ArrayList<>();
+            for(int i=0; i<len; i++){
                 TreeNode node = q.remove();
+                sub.add(node.val);
                 if(node.left!=null){
                     q.add(node.left);
                 }
                 if(node.right!=null){
                     q.add(node.right);
                 }
-                layer.add(node.val);
             }
-            res.add(layer);
+            list.add(new ArrayList<>(sub));
         }
+        return;
     }
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> res= new ArrayList<>();
+        List<List<Integer>> list= new ArrayList<>();
         if(root==null){
-            return res;
+            return list;
         }
-
-
-        bfs(res,root);
-        return res;
+        bsf(list,root);
+        return list;
     }
-
 }
