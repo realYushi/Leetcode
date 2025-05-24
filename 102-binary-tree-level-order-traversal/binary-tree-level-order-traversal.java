@@ -30,7 +30,7 @@ class Solution {
                     q.add(node.right);
                 }
             }
-            list.add(new ArrayList<>(sub));
+            list.add(sub);
         }
         return;
     }
