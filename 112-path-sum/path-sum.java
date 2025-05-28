@@ -26,8 +26,8 @@ class Solution {
                 return false;
             }
         }
-        
         return hasPathSum(root.left,targetSum)||hasPathSum(root.right,targetSum);
+
+        }
         
     }
-}
