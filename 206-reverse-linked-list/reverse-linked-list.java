@@ -13,6 +13,7 @@ class Solution {
         if(head==null){
             return null;
         }
+
         if(head.next==null){
             return head;
         }
@@ -20,5 +21,7 @@ class Solution {
         head.next.next=head;
         head.next=null;
         return newHead;
+
+        
     }
 }
