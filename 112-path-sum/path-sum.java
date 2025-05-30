@@ -20,13 +20,8 @@ class Solution {
         }
         targetSum-=root.val;
         if(root.left==null&&root.right==null){
-            if(targetSum==0){
-                return true;
-            }else{
-                return false;
-            }
+            return targetSum==0;
         }
         return hasPathSum(root.left,targetSum)||hasPathSum(root.right,targetSum);
-        
     }
 }
