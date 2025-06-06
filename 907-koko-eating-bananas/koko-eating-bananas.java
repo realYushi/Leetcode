@@ -9,8 +9,8 @@ class Solution {
         while(l<=r){
             int m=l+(r-l)/2;
             int time=eating(piles,m);
-            if(h<time){
-                l=m+1;  
+            if(time>h){
+                l=m+1;
             }else{
                 res=m;
                 r=m-1;
@@ -18,12 +18,12 @@ class Solution {
         }
         return res;
     }
-    private int eating(int[] piles, int n){
+    private int eating(int[] piles, int h){
         int res=0;
-        for(int b:piles){
-            res+=Math.ceil((double)b/n);
+        for(int n:piles){
+            res+=Math.ceil((double)n/h);
         }
         return res;
-
     }
+        
 }
