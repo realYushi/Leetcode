@@ -6,10 +6,8 @@ class Solution {
             if(q.size()>k){
                 q.remove();
             }
-
         }
         return q.peek();
-
         
     }
 }
