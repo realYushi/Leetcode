@@ -8,8 +8,8 @@ class Solution {
         int res=0;
         while(l<=r){
             int m=l+(r-l)/2;
-            int time=eating(piles,m);
-            if(time>h){
+            int speed=eatting(piles,m);
+            if(h<speed){
                 l=m+1;
             }else{
                 res=m;
@@ -18,12 +18,11 @@ class Solution {
         }
         return res;
     }
-    private int eating(int[] piles, int h){
+    private int eatting(int[] piles, int h){
         int res=0;
         for(int n:piles){
             res+=Math.ceil((double)n/h);
         }
         return res;
     }
-        
 }
