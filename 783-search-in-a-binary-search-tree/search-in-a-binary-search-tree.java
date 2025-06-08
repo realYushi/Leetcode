@@ -20,11 +20,10 @@ class Solution {
         }
         if(val<root.val){
             root=searchBST(root.left,val);
+        }else if(val>root.val){
+            root=searchBST(root.right,val);
         }
-        else if(val>root.val){
-            root= searchBST(root.right,val);
-        }
-        return root;
+            return root;
         
     }
 }
