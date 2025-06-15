@@ -1,16 +1,17 @@
 class Solution {
     public void sortColors(int[] nums) {
-        int[] bucket=new int[]{0,0,0};
+        int[] bucket= new int[]{0,0,0};
         for(int n:nums){
             bucket[n]++;
         }
-        int index=0;
-        for(int k=0; k<bucket.length;k++){
-            while(bucket[k]>0){
-                nums[index]=k;
-                index++;
-                bucket[k]--;
+        int k=0;
+        for(int i=0; i<bucket.length;i++){
+            while(bucket[i]>0){
+                nums[k]=i;
+                k++;
+                bucket[i]--;
             }
         }
-        }
+        
+    }
 }
