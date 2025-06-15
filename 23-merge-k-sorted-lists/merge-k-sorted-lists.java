@@ -9,9 +9,9 @@
  * }
  */
 class Solution {
-    private ListNode mergeKList(ListNode list1, ListNode list2){
-        ListNode dummyHead= new ListNode();
-        ListNode cur= dummyHead;
+    private ListNode mergeLists(ListNode list1, ListNode list2){
+        ListNode dummyHead=new ListNode();
+        ListNode cur=dummyHead;
         while(list1!=null&&list2!=null){
             if(list1.val<list2.val){
                 cur.next=list1;
@@ -33,8 +33,8 @@ class Solution {
         if(lists==null||lists.length<1){
             return null;
         }
-        for(int i=1; i<lists.length;i++){
-            lists[0]=mergeKList(lists[0],lists[i]);
+        for(int i=1; i<lists.length; i++){
+            lists[0]=mergeLists(lists[0],lists[i]);
         }
         return lists[0];
         
