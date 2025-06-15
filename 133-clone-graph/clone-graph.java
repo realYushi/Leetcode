@@ -20,7 +20,7 @@ class Node {
 
 class Solution {
     public Node cloneGraph(Node node) {
-        Map<Node, Node> old2new=new HashMap<>();
+        Map<Node, Node> old2new= new HashMap<>();
         return dfs(node,old2new);
     }
     private Node dfs(Node node, Map<Node,Node> old2new){
@@ -30,12 +30,10 @@ class Solution {
         if(old2new.containsKey(node)){
             return old2new.get(node);
         }
-
         old2new.put(node,new Node(node.val));
-        Node copy=old2new.get(node);
         for(Node nei:node.neighbors){
-            copy.neighbors.add(dfs(nei,old2new));
+            old2new.get(node).neighbors.add(dfs(nei,old2new));
         }
-        return copy;
+        return old2new.get(node);
     }
 }
