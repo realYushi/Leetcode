@@ -1,10 +1,6 @@
 class Solution {
-    int[] cache;
+        Map<Integer,Integer> cache= new HashMap<>();
     public int climbStairs(int n) {
-        this.cache=new int[n+1];
-        for(int i=0; i<=n; i++){
-            cache[i]=-1;
-        }
         return dfs(n);
     }
     private int dfs(int n){
@@ -14,9 +10,12 @@ class Solution {
         if(n==2){
             return 2;
         }
-        if(cache[n]!=-1){
-            return cache[n];
+        if(cache.containsKey(n)){
+            return cache.get(n);
         }
-        return cache[n]=dfs(n-1)+dfs(n-2);
+        int res=dfs(n-1)+dfs(n-2);
+        cache.put(n,res);
+        return cache.get(n);
+        
     }
 }
