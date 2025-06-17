@@ -12,6 +12,6 @@ class Solution {
         }
         int res= dfs(n-1)+dfs(n-2);
         map.put(n,res);
-        return map.get(n);
+        return res;
     }
 }
