@@ -1,20 +1,16 @@
-class Solution {
-    Map<Integer, Integer> cache= new HashMap<>();
+public class Solution {
+    int[] cache;
     public int climbStairs(int n) {
-        return dfs(n);
+        cache = new int[n];
+        for (int i = 0; i < n; i++) {
+            cache[i] = -1;
+        }
+        return dfs(n, 0); 
     }
-    private int dfs(int n){
-        if(n==1){
-            return 1;
-        }
-        if(n==2){
-            return 2;
-        }
-        if(cache.containsKey(n)){
-            return cache.get(n);
-        }
-        int result=dfs(n-1)+dfs(n-2);
-        cache.put(n,result);
-        return cache.get(n);
+
+    public int dfs(int n, int i) {
+        if (i >= n) return i == n ? 1 : 0;
+        if (cache[i] != -1) return cache[i];
+        return cache[i] = dfs(n, i + 1) + dfs(n, i + 2);
     }
 }
