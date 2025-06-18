@@ -23,7 +23,7 @@ class Solution {
         if(node==null){
             return null;
         }
-        Map<Node,Node> old2new= new HashMap<>();
+        Map<Node, Node> old2new=new HashMap<>();
         Queue<Node> q= new LinkedList<>();
         old2new.put(node,new Node(node.val));
         q.add(node);
@@ -38,6 +38,7 @@ class Solution {
             }
         }
         return old2new.get(node);
+
         
     }
 }
