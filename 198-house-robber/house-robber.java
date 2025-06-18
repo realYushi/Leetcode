@@ -1,18 +1,18 @@
 class Solution {
-    private int[] memo;
+    int[] cache;
     public int rob(int[] nums) {
-        this.memo=new int[nums.length];
-        Arrays.fill(memo,-1);
+        cache=new int[nums.length];
+        Arrays.fill(cache,-1);
         return dfs(nums,0);
     }
     private int dfs(int[] nums, int i){
         if(i>=nums.length){
             return 0;
         }
-        if(memo[i]!=-1){
-            return memo[i];
+        if(cache[i]!=-1){
+            return cache[i];
         }
-        memo[i]=Math.max(dfs(nums,i+1), nums[i]+dfs(nums,i+2));
-        return memo[i];
+        cache[i]=Math.max(nums[i]+dfs(nums,i+2),dfs(nums,i+1));
+        return cache[i];
     }
 }
