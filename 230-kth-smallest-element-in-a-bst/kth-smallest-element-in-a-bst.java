@@ -23,12 +23,9 @@ class Solution {
         if(root==null){
             return;
         }
-        if(root.left!=null){
-            inorder(list,root.left);
-        }
+        inorder(list,root.left);
         list.add(root.val);
-        if(root.right!=null){
-            inorder(list,root.right);
-        }
+        inorder(list,root.right);
+       
     }
 }
