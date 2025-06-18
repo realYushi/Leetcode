@@ -19,7 +19,7 @@ class Node {
 */
 
 class Solution {
-    Map<Node,Node> map= new HashMap<>();
+    Map<Node,Node> map=new HashMap<>();
     public Node cloneGraph(Node node) {
         return dfs(node);
     }
@@ -35,5 +35,6 @@ class Solution {
             map.get(node).neighbors.add(dfs(nei));
         }
         return map.get(node);
+        
     }
 }
