@@ -6,13 +6,13 @@ class Solution {
         if(nums.length==1){
             return nums[0];
         }
-        int[] cache = new int[nums.length];
-        cache[0]=nums[0];
-        cache[1]=Math.max(nums[0],nums[1]);
-        for(int i=2;i<nums.length;i++){
-            cache[i]=Math.max(nums[i]+cache[i-2], cache[i-1]);
+        int[] dp= new int[nums.length];
+        dp[0]=nums[0];
+        dp[1]=Math.max(nums[0],nums[1]);
+        for(int i=2; i<nums.length;i++){
+            dp[i]=Math.max(nums[i]+dp[i-2],dp[i-1]);
         }
-        return cache[nums.length-1];
+        return dp[nums.length-1];
         
     }
 }
