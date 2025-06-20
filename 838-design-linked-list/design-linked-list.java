@@ -1,19 +1,18 @@
-class Node {
+class Node{
     int val;
     Node next;
-    public Node(int val){
-        this.val=val;
-        this.next= null;
-    }
     public Node(){
         this.val=-1;
+        this.next=null;
+    }
+    public Node(int val){
+        this.val=val;
         this.next=null;
     }
 }
 class MyLinkedList {
     Node dummyHead;
     int size;
-
     public MyLinkedList() {
         this.dummyHead=new Node();
         this.size=0;
@@ -23,15 +22,15 @@ class MyLinkedList {
         if(index<0||index>=size){
             return -1;
         }
-        Node cur= dummyHead.next;
-        for(int i=0; i<index;i++){
+        Node cur= dummyHead;
+        for(int i=0; i<=index; i++){
             cur=cur.next;
         }
         return cur.val;
     }
     
     public void addAtHead(int val) {
-        Node node=new Node(val);
+        Node node = new Node(val);
         node.next=dummyHead.next;
         dummyHead.next=node;
         size++;
@@ -41,6 +40,7 @@ class MyLinkedList {
     public void addAtTail(int val) {
         Node node = new Node(val);
         Node cur= dummyHead;
+        
         while(cur.next!=null){
             cur=cur.next;
         }
@@ -52,7 +52,7 @@ class MyLinkedList {
     public void addAtIndex(int index, int val) {
         if(index<0||index>size){
             return;
-        }
+        }        
         if(index==0){
             addAtHead(val);
             return;
@@ -62,7 +62,7 @@ class MyLinkedList {
             return;
         }
         Node node = new Node(val);
-        Node cur= dummyHead;
+        Node cur = dummyHead;
         for(int i=0; i<index; i++){
             cur=cur.next;
         }
@@ -73,17 +73,17 @@ class MyLinkedList {
     }
     
     public void deleteAtIndex(int index) {
+        
         if(index<0||index>=size){
             return;
         }
         Node cur=dummyHead;
-        for(int i=0; i<index;i++){
+        for(int i=0; i<index; i++){
             cur=cur.next;
         }
         cur.next=cur.next.next;
         size--;
         return;
-        
     }
 }
 
