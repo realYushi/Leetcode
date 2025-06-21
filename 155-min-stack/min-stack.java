@@ -9,22 +9,17 @@ class MinStack {
     
     public void push(int val) {
         stack.add(val);
-        if(stack.size()==1){
+        if(min.isEmpty()||min.peek()>val){
             min.add(val);
         }else{
-            if(val<min.peek()){
-                min.add(val);
-            }
-            else{
-                min.add(min.peek());
-            }
+            min.add(min.peek());
         }
         return;
     }
     
     public void pop() {
-        min.pop();
         stack.pop();
+        min.pop();
         return;
     }
     
@@ -33,7 +28,8 @@ class MinStack {
     }
     
     public int getMin() {
-            return min.peek();
+        return min.peek();
+        
     }
 }
 
