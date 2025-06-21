@@ -19,10 +19,10 @@ class Node {
 */
 
 class Solution {
-    Map<Node, Node> map= new HashMap<>();
+    Map<Node,Node> map=new HashMap<>();
     public Node cloneGraph(Node node) {
         if(node==null){
-            return node;
+            return null;
         }
         return dfs(node);
     }
