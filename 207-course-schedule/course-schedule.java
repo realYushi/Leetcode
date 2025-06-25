@@ -1,14 +1,14 @@
 class Solution {
     Map<Integer,List<Integer>> map=new HashMap<>();
-    Set<Integer> set= new HashSet<>();
+    Set<Integer> set=new HashSet<>();
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        for(int i= 0; i<numCourses;i++){
+        for(int i=0; i<numCourses; i++){
             map.put(i,new ArrayList<>());
         }
         for(int[] rule:prerequisites){
             map.get(rule[0]).add(rule[1]);
         }
-        for(int i=0; i<numCourses;i++){
+        for(int i=0; i<numCourses; i++){
             if(!dfs(i)){
                 return false;
             }
@@ -31,7 +31,5 @@ class Solution {
         set.remove(course);
         map.put(course,new ArrayList<>());
         return true;
-
-        
     }
 }
