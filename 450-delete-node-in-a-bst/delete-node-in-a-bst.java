@@ -28,12 +28,12 @@ class Solution {
             }else if(root.right==null){
                 return root.left;
             }else{
-                TreeNode cur= root.right;
+                TreeNode cur=root.right;
                 while(cur.left!=null){
                     cur=cur.left;
                 }
                 root.val=cur.val;
-                root.right=deleteNode(root.right,cur.val);
+                root.right=deleteNode(root.right,root.val);
             }
         }
         return root;
