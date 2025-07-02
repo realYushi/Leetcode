@@ -10,6 +10,7 @@ class Solution {
             max=Math.max(max,cur);
         }
         return max;
+
         
     }
 }
