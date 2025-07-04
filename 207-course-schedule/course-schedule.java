@@ -1,13 +1,13 @@
 class Solution {
-    Map<Integer,List<Integer>> map;
+    Map<Integer, List<Integer> > map;
     Set<Integer> set;
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        map=new HashMap<>();
-        set=new HashSet<>();
-        for(int i=0; i<numCourses;i++){
+        map= new HashMap<>();
+        set= new HashSet<>();
+        for(int i=0;i<numCourses; i++){
             map.put(i,new ArrayList<>());
         }
-        for(int[]rule : prerequisites){
+        for(int[] rule:prerequisites){
             map.get(rule[0]).add(rule[1]);
         }
         for(int i=0; i<numCourses; i++){
