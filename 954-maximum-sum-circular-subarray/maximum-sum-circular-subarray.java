@@ -5,9 +5,9 @@ class Solution {
         for(int n:nums){
             t+=n;
             min=Math.min(n,min+n);
-            gmin=Math.min(gmin,min);
+            gmin=Math.min(min,gmin);
             max=Math.max(n,max+n);
-            gmax=Math.max(gmax,max);
+            gmax=Math.max(max,gmax);
         }
         return gmax<0?gmax:Math.max(gmax,t-gmin);
         
