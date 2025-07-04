@@ -1,30 +1,30 @@
 class Solution {
     public int countStudents(int[] students, int[] sandwiches) {
-        Queue<Integer> q= new LinkedList<>();
-        for(int i:students){
-            q.add(i);
+        Queue<Integer> q = new LinkedList<>();
+        for (int s : students) {
+            q.add(s);
         }
-        int eaten=0;
-        for(int n:sandwiches){
-            int att=0;
-            int len=q.size();
-            while(att!=q.size()){
-                if(q.peek()!=n){
-                    q.add(q.remove());
-                    att++;
-                }else{
-                    q.remove();
+        int eaten = 0;
+        for (int s : sandwiches) {
+            int att = 0;
+            int len = q.size();
+            while (att != len) {
+                if (s == q.peek()) {
                     eaten++;
+                    q.remove();
                     break;
+                } else {
+                    att++;
+                    q.add(q.remove());
+
                 }
             }
-            if(att==len){
+            if (len == att) {
                 break;
             }
+
         }
         return sandwiches.length-eaten;
 
-
-        
     }
 }
