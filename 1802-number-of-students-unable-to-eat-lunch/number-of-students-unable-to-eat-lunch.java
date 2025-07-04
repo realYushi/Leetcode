@@ -8,7 +8,7 @@ class Solution {
         for (int s : sandwiches) {
             int att = 0;
             int len = q.size();
-            while (att != len) {
+            while (att != q.size()) {
                 if (s == q.peek()) {
                     eaten++;
                     q.remove();
