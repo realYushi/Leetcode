@@ -7,8 +7,7 @@ class Solution {
                 max=0;
             }
             max+=n;
-            gmax=Math.max(gmax,max);
-            
+            gmax=Math.max(max,gmax);
         }
         return gmax;
         
