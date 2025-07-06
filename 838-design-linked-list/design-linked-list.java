@@ -1,21 +1,22 @@
 class Node{
-    int val;
     Node next;
-    public Node(){
-        this.val=-1;
-        this.next=null;
-    }
+    int val;
     public Node(int val){
-        this.val=val;
         this.next=null;
+        this.val=val;
+    }
+    public Node(){
+        this.next= null;
+        this.val=-1;
     }
 }
 class MyLinkedList {
     Node dummyHead;
     int size;
+
     public MyLinkedList() {
-        this.dummyHead=new Node();
-        this.size=0;
+        dummyHead= new Node();
+        size=0;
     }
     
     public int get(int index) {
@@ -31,28 +32,25 @@ class MyLinkedList {
     
     public void addAtHead(int val) {
         Node node = new Node(val);
-        node.next=dummyHead.next;
+        node.next= dummyHead.next;
         dummyHead.next=node;
         size++;
-        return;
     }
     
     public void addAtTail(int val) {
-        Node node = new Node(val);
+        Node node= new Node(val);
         Node cur= dummyHead;
-        
         while(cur.next!=null){
             cur=cur.next;
         }
         cur.next=node;
         size++;
-        return;
     }
     
     public void addAtIndex(int index, int val) {
         if(index<0||index>size){
             return;
-        }        
+        }
         if(index==0){
             addAtHead(val);
             return;
@@ -62,28 +60,27 @@ class MyLinkedList {
             return;
         }
         Node node = new Node(val);
-        Node cur = dummyHead;
-        for(int i=0; i<index; i++){
+        Node cur= dummyHead;
+        for(int i=0; i<index;i++){
             cur=cur.next;
         }
         node.next=cur.next;
         cur.next=node;
         size++;
-        return;
     }
     
     public void deleteAtIndex(int index) {
-        
         if(index<0||index>=size){
             return;
         }
-        Node cur=dummyHead;
+        Node cur= dummyHead;
         for(int i=0; i<index; i++){
             cur=cur.next;
         }
         cur.next=cur.next.next;
         size--;
         return;
+        
     }
 }
 
