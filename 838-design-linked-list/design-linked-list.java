@@ -1,13 +1,13 @@
 class Node{
-    Node next;
     int val;
+    Node next;
     public Node(int val){
-        this.next=null;
         this.val=val;
+        this.next= null;
     }
     public Node(){
-        this.next= null;
-        this.val=-1;
+        this.val=0;
+        this.next=null;
     }
 }
 class MyLinkedList {
@@ -15,8 +15,8 @@ class MyLinkedList {
     int size;
 
     public MyLinkedList() {
-        dummyHead= new Node();
-        size=0;
+        this.dummyHead= new Node();
+        this.size=0;
     }
     
     public int get(int index) {
@@ -24,7 +24,7 @@ class MyLinkedList {
             return -1;
         }
         Node cur= dummyHead;
-        for(int i=0; i<=index; i++){
+        for(int i=0; i<=index;i++){
             cur=cur.next;
         }
         return cur.val;
@@ -32,13 +32,13 @@ class MyLinkedList {
     
     public void addAtHead(int val) {
         Node node = new Node(val);
-        node.next= dummyHead.next;
+        node.next=dummyHead.next;
         dummyHead.next=node;
         size++;
     }
     
     public void addAtTail(int val) {
-        Node node= new Node(val);
+        Node node = new Node(val);
         Node cur= dummyHead;
         while(cur.next!=null){
             cur=cur.next;
@@ -49,7 +49,7 @@ class MyLinkedList {
     
     public void addAtIndex(int index, int val) {
         if(index<0||index>size){
-            return;
+            return ;
         }
         if(index==0){
             addAtHead(val);
@@ -60,8 +60,8 @@ class MyLinkedList {
             return;
         }
         Node node = new Node(val);
-        Node cur= dummyHead;
-        for(int i=0; i<index;i++){
+        Node cur = dummyHead;
+        for(int i= 0; i<index; i++){
             cur=cur.next;
         }
         node.next=cur.next;
@@ -74,13 +74,11 @@ class MyLinkedList {
             return;
         }
         Node cur= dummyHead;
-        for(int i=0; i<index; i++){
+        for(int i = 0; i<index; i++){
             cur=cur.next;
         }
         cur.next=cur.next.next;
         size--;
-        return;
-        
     }
 }
 
