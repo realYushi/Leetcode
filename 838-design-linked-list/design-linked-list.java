@@ -1,13 +1,13 @@
 class Node{
-    int val;
     Node next;
+    int val;
     public Node(int val){
+        this.next=null;
         this.val=val;
-        this.next= null;
     }
     public Node(){
-        this.val=0;
         this.next=null;
+        this.val=0;
     }
 }
 class MyLinkedList {
@@ -24,7 +24,7 @@ class MyLinkedList {
             return -1;
         }
         Node cur= dummyHead;
-        for(int i=0; i<=index;i++){
+        for(int i = 0; i<=index;i++){
             cur=cur.next;
         }
         return cur.val;
@@ -49,7 +49,7 @@ class MyLinkedList {
     
     public void addAtIndex(int index, int val) {
         if(index<0||index>size){
-            return ;
+            return;
         }
         if(index==0){
             addAtHead(val);
@@ -60,8 +60,8 @@ class MyLinkedList {
             return;
         }
         Node node = new Node(val);
-        Node cur = dummyHead;
-        for(int i= 0; i<index; i++){
+        Node cur= dummyHead;
+        for(int i =0; i<index; i++){
             cur=cur.next;
         }
         node.next=cur.next;
@@ -74,11 +74,12 @@ class MyLinkedList {
             return;
         }
         Node cur= dummyHead;
-        for(int i = 0; i<index; i++){
+        for(int i =0 ;i<index; i++){
             cur=cur.next;
         }
         cur.next=cur.next.next;
         size--;
+        
     }
 }
 
