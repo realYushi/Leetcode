@@ -23,8 +23,8 @@ class Solution {
         if(node==null){
             return node;
         }
-        Map<Node,Node> map= new HashMap<>();
         Queue<Node> q= new LinkedList<>();
+        Map<Node,Node> map= new HashMap<>();
         q.add(node);
         map.put(node,new Node(node.val));
         while(!q.isEmpty()){
@@ -38,7 +38,6 @@ class Solution {
             }
         }
         return map.get(node);
-        
         
     }
 }
