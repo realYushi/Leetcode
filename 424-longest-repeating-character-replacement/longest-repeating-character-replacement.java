@@ -1,6 +1,6 @@
 class Solution {
     public int characterReplacement(String s, int k) {
-        Set<Character> set = new HashSet<>();
+        Set<Character> set= new HashSet<>();
         for(char c:s.toCharArray()){
             set.add(c);
         }
@@ -8,7 +8,7 @@ class Solution {
         for(char c: set){
             int l=0;
             int count=0;
-            for(int r=0; r<s.length();r++){
+            for(int r=0; r<s.length(); r++){
                 if(s.charAt(r)==c){
                     count++;
                 }
@@ -20,7 +20,6 @@ class Solution {
                 }
                 res=Math.max(res,r-l+1);
             }
-
         }
         return res;
         
