@@ -1,7 +1,7 @@
 class Solution {
     public int maxTurbulenceSize(int[] arr) {
         int inc=1, dec=1, res=1;
-        for(int i=1; i<arr.length; i++){
+        for( int i=1; i<arr.length; i++){
             if(arr[i-1]<arr[i]){
                 inc=dec+1;
                 dec=1;
@@ -12,9 +12,11 @@ class Solution {
                 dec=1;
                 inc=1;
             }
-        res=Math.max(res,Math.max(dec,inc));
+            res=Math.max(res,Math.max(dec,inc));
         }
         return res;
+
+        
         
     }
 }
