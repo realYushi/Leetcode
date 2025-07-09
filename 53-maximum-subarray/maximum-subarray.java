@@ -7,7 +7,8 @@ class Solution {
                 sum=0;
             }
             sum+=n;
-            gsum= Math.max(gsum,sum);
+            gsum=Math.max(gsum,sum);
+            
         }
         return gsum;
         
