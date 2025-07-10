@@ -8,9 +8,9 @@ class Solution {
             }
             sum+=n;
             gsum=Math.max(gsum,sum);
-            
         }
         return gsum;
+
         
     }
 }
