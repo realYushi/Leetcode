@@ -1,68 +1,71 @@
 class Node{
-    int key;
-    int val;
     Node prev;
     Node next;
-    public Node(int key , int val){
+    int key;
+    int val;
+    public Node(int key, int val){
+        this.prev= null;
+        this.next=null;
         this.key=key;
         this.val=val;
-        this.prev=null;
-        this.next=null;
     }
     public Node(){
+        this.prev= null;
+        this.next=null;
         this.key=0;
         this.val=0;
-        this.prev=null;
-        this.next=null;
     }
 }
 class LRUCache {
-    Map<Integer,Node> map;
     Node dummyHead;
     Node dummyTail;
+    Map<Integer,Node> map;
     int cap;
+
     public LRUCache(int capacity) {
         this.cap=capacity;
         this.map= new HashMap<>();
-        this.dummyHead= new Node();
-        this.dummyTail= new Node();
+        this.dummyHead=new Node();
+        this.dummyTail=new Node();
         this.dummyHead.next=this.dummyTail;
         this.dummyTail.prev=this.dummyHead;
     }
+        
     private void add(Node node){
-        node.next=dummyTail;
-        node.prev=dummyTail.prev;
-        node.next.prev=node;
+        node.next=dummyHead.next;
+        node.prev=dummyHead;
         node.prev.next=node;
+        node.next.prev=node;
+
     }
     private void remove(Node node){
-        node.next.prev=node.prev;
         node.prev.next=node.next;
+        node.next.prev=node.prev;
     }
     
     public int get(int key) {
         if(map.containsKey(key)){
-            Node node= map.get(key);
+            Node node = map.get(key);
             remove(node);
             add(node);
             return node.val;
+        }else{
+            return -1;
         }
-        return -1;
     }
     
     public void put(int key, int value) {
         Node node = new Node(key,value);
-        if(map.containsKey(node.key)){
+        if(map.containsKey(key)){
             remove(map.get(key));
-        }else{
-            if(map.size()==this.cap){
-                Node lru= this.dummyHead.next;
-                remove(lru);
-                map.remove(lru.key);
-            }
         }
-        add(node);
         map.put(node.key,node);
+        add(node);
+        if(map.size()>this.cap){
+            Node lru= dummyTail.prev; 
+            map.remove(lru.key);
+            remove(lru);
+        }
         
     }
 }
