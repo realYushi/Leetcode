@@ -4,39 +4,38 @@ class Node{
     int key;
     int val;
     public Node(int key, int val){
-        this.prev= null;
-        this.next=null;
         this.key=key;
         this.val=val;
+        this.prev=null;
+        this.next=null;
     }
     public Node(){
-        this.prev= null;
-        this.next=null;
         this.key=0;
         this.val=0;
+        this.prev=null;
+        this.next=null;
     }
 }
 class LRUCache {
     Node dummyHead;
     Node dummyTail;
-    Map<Integer,Node> map;
     int cap;
+    Map<Integer, Node> map;
 
     public LRUCache(int capacity) {
-        this.cap=capacity;
-        this.map= new HashMap<>();
         this.dummyHead=new Node();
         this.dummyTail=new Node();
+        this.cap=capacity;
         this.dummyHead.next=this.dummyTail;
         this.dummyTail.prev=this.dummyHead;
+        this.map=new HashMap<>();
     }
-        
     private void add(Node node){
-        node.next=dummyHead.next;
-        node.prev=dummyHead;
-        node.prev.next=node;
+        Node cur= dummyTail.prev;
+        node.next=dummyTail;
+        node.prev=cur;
         node.next.prev=node;
-
+        node.prev.next=node;
     }
     private void remove(Node node){
         node.prev.next=node.next;
@@ -44,28 +43,29 @@ class LRUCache {
     }
     
     public int get(int key) {
-        if(map.containsKey(key)){
-            Node node = map.get(key);
-            remove(node);
-            add(node);
-            return node.val;
-        }else{
+        if(!map.containsKey(key)){
             return -1;
         }
+        Node node = map.get(key); 
+        remove(node);
+        add(node);
+        return node.val;
+        
     }
     
     public void put(int key, int value) {
         Node node = new Node(key,value);
-        if(map.containsKey(key)){
-            remove(map.get(key));
+        if(map.containsKey(node.key)){
+            remove(map.get(node.key));
         }
         map.put(node.key,node);
         add(node);
         if(map.size()>this.cap){
-            Node lru= dummyTail.prev; 
+            Node lru= dummyHead.next;
             map.remove(lru.key);
             remove(lru);
         }
+
         
     }
 }
