@@ -23,23 +23,20 @@ class Solution {
         if(node==null){
             return node;
         }
-        Map<Node,Node> map= new HashMap<>();
-        Queue<Node> q= new LinkedList<>();
-        map.put(node,new Node(node.val));
+        Map<Node,Node> map=new HashMap<>();
+        Queue<Node> q = new LinkedList<>();
+        map.put(node, new Node(node.val));
         q.add(node);
         while(!q.isEmpty()){
             Node cur= q.remove();
             for(Node nei:cur.neighbors){
                 if(!map.containsKey(nei)){
-                    map.put(nei, new Node(nei.val));
+                    map.put(nei,new Node(nei.val));
                     q.add(nei);
                 }
                 map.get(cur).neighbors.add(map.get(nei));
             }
         }
         return map.get(node);
-
-
-        
     }
 }
