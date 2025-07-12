@@ -5,10 +5,10 @@ class Solution {
             set.add(c);
         }
         int res=0;
-        for(char c: set){
+        for(char c:set){
             int l=0;
             int count=0;
-            for(int r=0; r<s.length(); r++){
+            for(int r=0; r<s.length();r++){
                 if(s.charAt(r)==c){
                     count++;
                 }
