@@ -1,12 +1,15 @@
 class Solution {
-    Map<Integer,List<Integer>> map= new HashMap<>();
-    Set<Integer> set= new HashSet<>();
+    Map<Integer,LinkedList<Integer>> map;
+    Set<Integer> set;
     public boolean canFinish(int numCourses, int[][] prerequisites) {
+        set= new HashSet<>();
+        map= new HashMap<>();
         for(int i=0; i<numCourses; i++){
             map.put(i,new LinkedList<>());
         }
-        for(int[] rule:prerequisites){
-            map.get(rule[0]).add(rule[1]);
+        
+        for(int[] pair:prerequisites){
+            map.get(pair[0]).add(pair[1]);
         }
         for(int i=0; i<numCourses; i++){
             if(!dfs(i)){
@@ -15,21 +18,21 @@ class Solution {
         }
         return true;
     }
-    private boolean dfs(int cousres){
-        if(set.contains(cousres)){
+    private boolean dfs(int course){
+        if(set.contains(course)){
             return false;
         }
-        if(map.get(cousres).isEmpty()){
+        if(map.get(course).isEmpty()){
             return true;
         }
-        set.add(cousres);
-        for(int pre:map.get(cousres)){
+        set.add(course);
+        for(int pre:map.get(course)){
             if(!dfs(pre)){
                 return false;
             }
         }
-        set.remove(cousres);
-        map.put(cousres,new LinkedList<>());
+        set.remove(course);
+        map.put(course,new LinkedList<>());
         return true;
 
     }
