@@ -8,8 +8,8 @@ class Solution {
         for(int i=0; i<bin.length; i++){
             while(bin[i]>0){
                 nums[t]=i;
-                t++;
                 bin[i]--;
+                t++;
             }
         }
         
