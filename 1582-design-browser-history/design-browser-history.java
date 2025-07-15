@@ -1,13 +1,13 @@
 class BrowserHistory {
     List<String> list;
-    int index;
     int size;
+    int index;
 
     public BrowserHistory(String homepage) {
         this.list= new LinkedList<>();
         list.add(homepage);
-        this.index=0;
         this.size=1;
+        this.index=0;
     }
     
     public void visit(String url) {
@@ -17,16 +17,16 @@ class BrowserHistory {
         }else{
             list.set(index,url);
         }
-        size=index+1;
+        this.size=index+1;
     }
     
     public String back(int steps) {
-        index= Math.max(0,index-steps);
+        this.index= Math.max(0,this.index-steps);
         return list.get(index);
     }
     
     public String forward(int steps) {
-        index=Math.min(size-1,index+steps);
+        this.index=Math.min(this.size-1, this.index+steps);
         return list.get(index);
         
     }
