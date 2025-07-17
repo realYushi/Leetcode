@@ -24,7 +24,7 @@ class Solution {
             root.right=deleteNode(root.right,key);
         }else{
             if(root.left==null){
-                return root.right; 
+                return root.right;
             }else if(root.right==null){
                 return root.left;
             }else{
@@ -34,7 +34,9 @@ class Solution {
                 }
                 root.val=cur.val;
                 root.right=deleteNode(root.right,root.val);
+
             }
+
         }
         return root;
         
