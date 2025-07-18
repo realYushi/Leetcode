@@ -19,8 +19,9 @@ class Node {
 */
 
 class Solution {
-    Map<Node,Node> map= new HashMap<>();
+    Map<Node,Node> map;
     public Node cloneGraph(Node node) {
+        map= new HashMap<>();
         return dfs(node);
     }
     private Node dfs(Node node){
@@ -31,9 +32,10 @@ class Solution {
             return map.get(node);
         }
         map.put(node, new Node(node.val));
-        for(Node nei: node.neighbors){
+        for(Node nei:node.neighbors){
             map.get(node).neighbors.add(dfs(nei));
         }
         return map.get(node);
+        
     }
 }
