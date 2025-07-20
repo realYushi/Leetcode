@@ -12,7 +12,7 @@ class Solution {
     private ListNode merge2Lists(ListNode list1, ListNode list2){
         ListNode dummyHead= new ListNode();
         ListNode head = dummyHead;
-        while(list1!=null&&list2!=null){
+        while(list1!=null && list2!=null){
             if(list1.val<list2.val){
                 head.next=list1;
                 list1=list1.next;
@@ -30,13 +30,15 @@ class Solution {
         return dummyHead.next;
     }
     public ListNode mergeKLists(ListNode[] lists) {
-        if(lists==null||lists.length==0){
+        if(lists.length==0){
             return null;
         }
-        for(int i=1;i<lists.length;i++){
-            lists[0]=merge2Lists(lists[0],lists[i]);
+        if(lists.length==1){
+            return lists[0];
+        }
+        for(int i=1; i<lists.length;i++){
+            lists[0]= merge2Lists(lists[0],lists[i]);
         }
         return lists[0];
-        
     }
 }

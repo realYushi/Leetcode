@@ -14,14 +14,12 @@ class Solution {
         int sum=0;
         for(int n:nums){
             sum+=n;
-            max=Math.max(max+n,n);
+            max=Math.max(n,max+n);
             gmax=Math.max(gmax,max);
-            min=Math.min(min+n,n);
+            min=Math.min(n,min+n);
             gmin=Math.min(gmin,min);
         }
         return gmax<0?gmax:Math.max(gmax,sum-gmin);
-
-        
     }
 }
 // @lc code=end

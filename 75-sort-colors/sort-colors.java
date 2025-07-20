@@ -1,17 +1,16 @@
 class Solution {
     public void sortColors(int[] nums) {
         int[] bin = new int[3];
-        for(int n:nums){
-            bin[n]++;
+        for(int c:nums){
+            bin[c]++;
         }
-        int t=0;
+        int l=0;
         for(int i=0; i<bin.length; i++){
             while(bin[i]>0){
-                nums[t]=i;
+                nums[l]=i;
                 bin[i]--;
-                t++;
+                l++;
             }
         }
-        
     }
 }
