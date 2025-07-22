@@ -13,10 +13,10 @@ class Solution {
         }
         int eaten=0;
         for(int s:sandwiches){
-            int att=0;
             int len= q.size();
+            int att=0;
             while(att!=len){
-                if(s==q.peek()){
+                if(q.peek()==s){
                     q.remove();
                     eaten++;
                     break;
@@ -30,7 +30,6 @@ class Solution {
             }
         }
         return sandwiches.length-eaten;
-        
     }
 }
 // @lc code=end
