@@ -7,14 +7,14 @@ class Solution {
         int res=0;
         for(char c:set){
             int l=0;
-            int count=0;
-            for(int r=0; r<s.length();r++){
+            int counter=0;
+            for(int r=0;r<s.length(); r++){
                 if(s.charAt(r)==c){
-                    count++;
+                    counter++;
                 }
-                while(r-l+1-count>k){
+                while(r-l+1-counter>k){
                     if(s.charAt(l)==c){
-                        count--;
+                        counter--;
                     }
                     l++;
                 }
@@ -22,6 +22,5 @@ class Solution {
             }
         }
         return res;
-        
     }
 }

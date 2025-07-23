@@ -35,7 +35,9 @@ class Solution {
                 root.val=cur.val;
                 root.right=deleteNode(root.right,cur.val);
             }
+
         }
         return root;
+
     }
 }

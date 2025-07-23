@@ -8,9 +8,9 @@
 class Solution {
     public int maxSubarraySumCircular(int[] nums) {
         int min=0;
+        int gmin=nums[0];
         int max=0;
         int gmax=nums[0];
-        int gmin=nums[0];
         int sum=0;
         for(int n:nums){
             sum+=n;

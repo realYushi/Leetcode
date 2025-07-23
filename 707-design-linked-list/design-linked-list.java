@@ -10,7 +10,7 @@ class Node{
     int val;
     public Node(int val){
         this.val=val;
-        this.next=null;
+        this.next= null;
     }
     public Node(){
         this.val=0;
@@ -21,36 +21,31 @@ class MyLinkedList {
     Node dummyHead;
     Node dummyTail;
     int size;
-    public MyLinkedList() {
-        this.dummyHead=new Node();
-        this.dummyTail=new Node();
-        dummyHead.next=dummyTail;
+    public MyLinkedList(){
+        this.dummyHead= new Node();
+        this.dummyTail= new Node();
+        this.dummyHead.next=this.dummyTail;
         this.size=0;
     }
-    
-    public int get(int index) {
+    public int get(int index){
         if(index<0||index>=size){
             return -1;
         }
-        Node cur= dummyHead;
-        for(int i = 0; i<=index; i++){
-            cur=cur.next;
+        Node cur= this.dummyHead;
+        for(int i=0; i<=index; i++){
+            cur= cur.next;
         }
         return cur.val;
-
-        
     }
-    
-    public void addAtHead(int val) {
-        Node node = new Node(val);
-        node.next=dummyHead.next;
-        dummyHead.next=node;
-        size++;
-    }
-    
-    public void addAtTail(int val) {
+    public void addAtHead(int val){
         Node node= new Node(val);
-        Node cur= dummyHead;
+        node.next=this.dummyHead.next;
+        this.dummyHead.next=node;
+        this.size++;
+    }
+    public void addAtTail(int val){
+        Node node= new Node(val);
+        Node cur= this.dummyHead;
         while(cur.next!=dummyTail){
             cur=cur.next;
         }
@@ -58,21 +53,20 @@ class MyLinkedList {
         cur.next=node;
         size++;
     }
-    
-    public void addAtIndex(int index, int val) {
-        if(index<0||index>size){
-            return;
-        }
-        if(index==size){
-            addAtTail(val);
+    public void addAtIndex(int index, int val){
+        if(index<0||index>this.size){
             return;
         }
         if(index==0){
             addAtHead(val);
             return;
         }
-        Node cur= dummyHead;
-        Node node= new Node(val);
+        if(index==this.size){
+            addAtTail(val);
+            return;
+        }
+        Node node = new Node(val);
+        Node cur= this.dummyHead;
         for(int i=0; i<index; i++){
             cur=cur.next;
         }
@@ -80,18 +74,19 @@ class MyLinkedList {
         cur.next=node;
         size++;
     }
-    
-    public void deleteAtIndex(int index) {
+    public void deleteAtIndex(int index){
         if(index<0||index>=size){
             return;
         }
-        Node cur=dummyHead;
+        Node cur= dummyHead;
         for(int i=0; i<index; i++){
             cur=cur.next;
         }
         cur.next=cur.next.next;
+
         size--;
-        
+
+
     }
 }
 
